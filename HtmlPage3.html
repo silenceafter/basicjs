@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+		const a = parseInt(prompt("Введите число a (целое): "), 10),
+		b = parseInt(prompt("Введите число b (целое): "), 10);
+		//
+		if (Number.isInteger(a) && Number.isInteger(b)) {
+			//a и b введены корректно
+			let apositive = false;
+			let bpositive = false;
+			
+			if (a >= 0){
+				apositive = true;
+			}
+			
+			if (b >= 0){
+				bpositive = true;
+			}
+			
+			//a >= 0, b >= 0
+			if (apositive && bpositive){
+				console.log(`${a} - ${b} = ${a - b}`);
+			}
+			
+			//a < 0, b < 0
+			if (!apositive && !bpositive){
+				console.log(`(${a}) * (${b}) = ${a * b}`);
+			}
+			
+			//a >= 0 или b >= 0
+			if (apositive && !bpositive || !apositive && bpositive){
+				if (!apositive)
+					console.log(`(${a}) + ${b} = ${a + b}`);
+				
+				if (!bpositive)
+					console.log(`${a} + (${b}) = ${a + b}`);
+			}
+		}
+		else {
+			if (!Number.isInteger(a))
+				console.log("Введите число a корректно!");
+				
+			if (!Number.isInteger(b))
+				console.log("Введите число b корректно!");
+		}		
+    </script>
+</body>
+</html>

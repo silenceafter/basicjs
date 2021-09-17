@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+		const a = parseFloat(prompt("Введите число a: "));
+		const b = parseFloat(prompt("Введите число b: "));
+		//
+		if (isNumeric(a) && isNumeric(b)) {
+			//число
+			console.log(`Сложение ${a} + ${b} = ${addition(a,b)}`);
+			console.log(`Вычитание ${a} - ${b} = ${substraction(a,b)}`);
+			console.log(`Умножение ${a} * ${b} = ${multiplication(a,b)}`);
+			console.log(`Деление ${a} / ${b} = ${division(a,b)}`);
+		} else {
+			//не число
+			if (!isNumeric(a))
+				console.log("Введите число a корректно!");
+				
+			if (!isNumeric(b))
+				console.log("Введите число b корректно!");
+		}
+		
+		function isNumeric(n) {
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		}
+		
+		function addition(a,b){
+			return a + b;
+		}
+		
+		function substraction(a,b) {
+			return a - b;
+		}
+		
+		function multiplication(a,b) {
+			return a * b;
+		}
+		
+		function division(a,b) {
+			return +(a / b).toFixed(2);
+		}
+    </script>
+</body>
+</html>

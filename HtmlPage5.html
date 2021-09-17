@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+		const a = parseFloat(prompt("Введите число a: "));
+		const b = parseFloat(prompt("Введите число b: "));
+		const operation = prompt("Введите название действия: ");
+		//
+		if (isNumeric(a) && isNumeric(b) && typeof(operation) == "string") {//
+			//число
+			if (!isEmpty(operation)) {
+				mathOperation(a,b,operation);
+			} else {
+				console.log("Операция не указана");
+			}
+		} else {
+			//не число
+			if (!isNumeric(a))
+				console.log("Введите число a корректно!");
+				
+			if (!isNumeric(b))
+				console.log("Введите число b корректно!");
+				
+			if (!typeof(operation) == "string"){
+				console.log("Введите название действия!");
+			}
+		}
+		
+		function isNumeric(n) {
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		}
+		
+		function isEmpty(str) {
+		  if (str.trim() == '') 
+			return true;			
+		  return false;
+		}
+		
+		function mathOperation(arg1,arg2,operation){
+			let myOperation = (operation).trim();
+			myOperation = myOperation.toLowerCase();
+			//
+			switch(myOperation) {
+				case 'сложение':
+					console.log(`Сложение: ${a} + ${b} = ${addition(a,b)}`);
+					break;
+					
+				case 'вычитание':
+					console.log(`Вычитание: ${a} - ${b} = ${substraction(a,b)}`);
+					break;
+					
+				case 'умножение':
+					console.log(`Умножение: ${a} * ${b} = ${multiplication(a,b)}`);
+					break;
+					
+				case 'деление':
+					console.log(`Деление: ${a} / ${b} = ${division(a,b)}`);
+					break;
+					
+				default:
+					console.log("Действие не указано");
+			}
+		}
+		
+		function addition(a,b){
+			return a + b;
+		}
+		
+		function substraction(a,b) {
+			return a - b;
+		}
+		
+		function multiplication(a,b) {
+			return a * b;
+		}
+		
+		function division(a,b) {
+			return +(a / b).toFixed(2);
+		}
+    </script>
+</body>
+</html>
