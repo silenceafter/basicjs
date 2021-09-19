@@ -12,73 +12,100 @@
 		//
 		if (isNumeric(a) && isNumeric(b) && typeof(operation) == "string") {//
 			//число
-			if (!isEmpty(operation)) {
-				mathOperation(a,b,operation);
+			if (operation.trim() != '') {
+				alert(mathOperation(a, b, operation));
 			} else {
-				console.log("Операция не указана");
+				alert("Операция не указана");
 			}
 		} else {
 			//не число
-			if (!isNumeric(a))
-				console.log("Введите число a корректно!");
-				
-			if (!isNumeric(b))
-				console.log("Введите число b корректно!");
-				
-			if (!typeof(operation) == "string"){
-				console.log("Введите название действия!");
+			if (!isNumeric(a)) {
+				alert("Введите число a корректно!");
+			} else {
+				alert("Введите число b корректно!");
 			}
 		}
 		
+		/*
+			Является ли переменная числом?
+			@param {*} n - данные, введенные с клавиатуры
+			@returns {boolean}
+		*/	
 		function isNumeric(n) {
-			return !isNaN(parseFloat(n)) && isFinite(n);
+			return !Number.isNaN(Number.parseFloat(n)) && Number.isFinite(n);
 		}
 		
-		function isEmpty(str) {
-		  if (str.trim() == '') 
-			return true;			
-		  return false;
-		}
-		
-		function mathOperation(arg1,arg2,operation){
+		/*
+			Выполнить математическую операцию
+			@param {numeric} arg1 - аргумент 1
+			@param {numeric} arg2 - аргумент 2
+			@returns {}
+		*/
+		function mathOperation(arg1, arg2, operation){
 			let myOperation = (operation).trim();
-			myOperation = myOperation.toLowerCase();
+			let result;
+			myOperation = myOperation.toLowerCase();			
 			//
 			switch(myOperation) {
 				case 'сложение':
-					console.log(`Сложение: ${a} + ${b} = ${addition(a,b)}`);
+					result = `Сложение: ${a} + ${b} = ${addition(a, b)}`;
 					break;
 					
 				case 'вычитание':
-					console.log(`Вычитание: ${a} - ${b} = ${substraction(a,b)}`);
+					result = `Вычитание: ${a} - ${b} = ${substraction(a, b)}`;
 					break;
 					
 				case 'умножение':
-					console.log(`Умножение: ${a} * ${b} = ${multiplication(a,b)}`);
+					result = `Умножение: ${a} * ${b} = ${multiplication(a, b)}`;
 					break;
 					
 				case 'деление':
-					console.log(`Деление: ${a} / ${b} = ${division(a,b)}`);
+					result = `Деление: ${a} / ${b} = ${division(a, b)}`;
 					break;
 					
 				default:
-					console.log("Действие не указано");
+					result = "Действие не указано";
 			}
+			return result;
 		}
 		
-		function addition(a,b){
+		/*
+			Сложение двух чисел
+			@param {numeric} a - 1-е слогаемое
+			@param {numeric} b - 2-е слогаемое
+			@returns {numeric}
+		*/
+		function addition(a, b){
 			return a + b;
 		}
 		
-		function substraction(a,b) {
+		/*
+			Разность двух чисел
+			@param {numeric} a - уменьшаемое
+			@param {numeric} b - вычитаемое
+			@returns {numeric}
+		*/
+		function substraction(a, b) {
 			return a - b;
 		}
 		
-		function multiplication(a,b) {
+		/*
+			Умножение двух чисел
+			@param {numeric} a - множимое
+			@param {numeric} b - множитель
+			@returns {numeric}
+		*/
+		function multiplication(a, b) {
 			return a * b;
 		}
 		
-		function division(a,b) {
+		/*
+			Деление двух чисел
+			@param {numeric} a - делимое
+			@param {numeric} b - делитель
+			@returns {numeric}
+		*/
+		function division(a, b) {
 			return +(a / b).toFixed(2);
 		}
     </script>

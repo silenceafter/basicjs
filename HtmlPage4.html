@@ -11,10 +11,10 @@
 		//
 		if (isNumeric(a) && isNumeric(b)) {
 			//число
-			console.log(`Сложение ${a} + ${b} = ${addition(a,b)}`);
-			console.log(`Вычитание ${a} - ${b} = ${substraction(a,b)}`);
-			console.log(`Умножение ${a} * ${b} = ${multiplication(a,b)}`);
-			console.log(`Деление ${a} / ${b} = ${division(a,b)}`);
+			console.log(`Сложение ${a} + ${b} = ${addition(a, b)}`);
+			console.log(`Вычитание ${a} - ${b} = ${substraction(a, b)}`);
+			console.log(`Умножение ${a} * ${b} = ${multiplication(a, b)}`);
+			console.log(`Деление ${a} / ${b} = ${division(a, b)}`);
 		} else {
 			//не число
 			if (!isNumeric(a))
@@ -23,24 +23,53 @@
 			if (!isNumeric(b))
 				console.log("Введите число b корректно!");
 		}
-		
+
+		/*
+			Является ли переменная числом?
+			@param {*} n - данные, введенные с клавиатуры
+			@returns {boolean}
+		*/	
 		function isNumeric(n) {
-			return !isNaN(parseFloat(n)) && isFinite(n);
+			return !Number.isNaN(Number.parseFloat(n)) && Number.isFinite(n);
 		}
 		
-		function addition(a,b){
+		/*
+			Сложение двух чисел
+			@param {numeric} a - 1-е слогаемое
+			@param {numeric} b - 2-е слогаемое
+			@returns {numeric}
+		*/
+		function addition(a, b){
 			return a + b;
 		}
 		
-		function substraction(a,b) {
+		/*
+			Разность двух чисел
+			@param {numeric} a - уменьшаемое
+			@param {numeric} b - вычитаемое
+			@returns {numeric}
+		*/
+		function substraction(a, b) {
 			return a - b;
 		}
 		
-		function multiplication(a,b) {
+		/*
+			Умножение двух чисел
+			@param {numeric} a - множимое
+			@param {numeric} b - множитель
+			@returns {numeric}
+		*/
+		function multiplication(a, b) {
 			return a * b;
 		}
 		
-		function division(a,b) {
+		/*
+			Деление двух чисел
+			@param {numeric} a - делимое
+			@param {numeric} b - делитель
+			@returns {numeric}
+		*/
+		function division(a, b) {
 			return +(a / b).toFixed(2);
 		}
     </script>

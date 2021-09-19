@@ -7,38 +7,22 @@
     <script>
         "use strict";
 		const a = parseInt(prompt("Введите число a (целое): "), 10),
-		b = parseInt(prompt("Введите число b (целое): "), 10);
+			  b = parseInt(prompt("Введите число b (целое): "), 10);
 		//
 		if (Number.isInteger(a) && Number.isInteger(b)) {
 			//a и b введены корректно
-			let apositive = false;
-			let bpositive = false;
-			
-			if (a >= 0){
-				apositive = true;
-			}
-			
-			if (b >= 0){
-				bpositive = true;
-			}
+			let apositive = a >= 0;
+			let bpositive = b >= 0;
 			
 			//a >= 0, b >= 0
-			if (apositive && bpositive){
-				console.log(`${a} - ${b} = ${a - b}`);
-			}
-			
-			//a < 0, b < 0
-			if (!apositive && !bpositive){
-				console.log(`(${a}) * (${b}) = ${a * b}`);
-			}
-			
-			//a >= 0 или b >= 0
-			if (apositive && !bpositive || !apositive && bpositive){
-				if (!apositive)
-					console.log(`(${a}) + ${b} = ${a + b}`);
-				
-				if (!bpositive)
-					console.log(`${a} + (${b}) = ${a + b}`);
+			if (apositive && bpositive) {
+				console.log(`${a} - ${b} = ${a - b}`);				 
+			} else if (!apositive && !bpositive) {
+				//a < 0, b < 0	
+				console.log(`(${a}) * (${b}) = ${a * b}`);	
+			} else {
+				//a >= 0 или b >= 0
+				console.log(`${a} + ${b} = ${a + b}`);
 			}
 		}
 		else {
