@@ -6,10 +6,10 @@
 <body>
     <script>
         "use strict";
-		/*
-			Для каждого товара установим новое значение цены
-            со скидкой 15%
-		*/
+	/*
+		Для каждого товара установим новое значение цены
+        	со скидкой 15%
+	*/
         
         const products = [
             {
@@ -26,8 +26,8 @@
             },
         ];
 
-		products.forEach(element => {
-            element.price = element.price - element.price * 0.15;
+	products.forEach(element => {
+        	element.price = element.price - element.price * 0.15;
         });
         console.log(products);
     </script>
