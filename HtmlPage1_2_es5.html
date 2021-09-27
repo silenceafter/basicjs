@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        /*
+            myPost.text = "Текст", при изменении myPost.text = "Новый текст",
+            проследить изменения можно при отладке, если сразу смотреть на 
+            результат в console.log(), то увидим только последние изменения
+        */
+
+        //es5
+        //конструктор
+        function Post(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+
+        //добавляем метод в прототип
+        Post.prototype.edit = function(text) {
+            this.text = text;
+        };
+
+        const myPost = new Post("ivanov", "Текст", Date(2021, 8, 27));
+        console.log(myPost);
+        myPost.edit("Новый текст");
+        console.log(myPost);
+
+        //конструктор объекта-наследника
+        function AttachedPost(author, text, date) {
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+        }
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = AttachedPost;
+
+        AttachedPost.prototype.makeTextHighlighted = function() {
+            this.highlighted = true;
+        };
+
+        const myAttached = new AttachedPost("petrov", "Текст сообщения", Date(2021, 7, 20));
+        console.log(myAttached);
+        myAttached.edit("Текст сообщения 2");
+        myAttached.makeTextHighlighted();        
+        console.log(myAttached);
+    </script>
+</body>
+</html>

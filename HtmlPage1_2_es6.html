@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        //es6
+        class Post {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+
+            edit(text) {
+                this.text = text;
+            }
+        }
+
+        const myPost = new Post("ivanov", "Текст", Date(2021, 8, 27));
+        console.log(myPost);
+        myPost.edit("Новый текст");
+        console.log(myPost);
+
+        class AttachedPost extends Post {
+            constructor(author, text, date) {
+                super(author, text, date);
+                this.highlighted = false;
+            }
+
+            makeTextHighlighted() {
+                this.highlighted = true;
+            }
+        }
+
+        const myAttached = new AttachedPost("petrov", "Текст сообщения", Date(2021, 7, 20));
+        console.log(myAttached);
+        myAttached.edit("Текст сообщения 2");
+        myAttached.makeTextHighlighted();        
+        console.log(myAttached);
+    </script>
+</body>
+</html>
