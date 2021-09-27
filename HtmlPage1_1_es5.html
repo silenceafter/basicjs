@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+         //es5
+         //конструктор
+        function Product(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+        
+        //добавляем метод в прототип
+        Product.prototype.make25PercentDiscount = function() {
+            this.price = this.price - (this.price * 25 / 100);
+        };
+
+        const myProduct = new Product("Кофе зерновой, 1кг", 1000);
+        console.log(myProduct);//товар без скидки
+        myProduct.make25PercentDiscount();
+        console.log(myProduct);//товар со скидкой
+    </script>
+</body>
+</html>

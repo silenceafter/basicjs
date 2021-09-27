@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        /** 
+         * Преобразовать число в объект
+         * @param {*} data - данные, введенные с клавиатуры
+         * @returns {object}
+        */
+        function numberToObject(data) {
+            let number = parseFloat(data);
+            if (Number.isNaN(number)) {
+                console.log(`${data} не число, введите значение еще раз`);
+            } else if (Number.isInteger(number)) {
+                if (data > 0 && data < 999) {
+                    //число в диапазоне
+                    console.log('число в диапазоне');
+                    return {
+                        units: number % 10,//единицы
+                        tens: Math.floor(number / 10) % 10,//десятки
+                        hundreds: Math.floor(number / 100),//сотни
+                    };
+                } else {
+                    //число вне диапазона
+                    console.log(`число ${number} вне диапазона`);
+                }
+            } else {
+                console.log(`число ${number} не целое, введите значение еще раз`);
+            }
+            return {};
+        }
+
+        console.log(numberToObject(prompt("Введите целое число в диапазоне от 0 до 999")));
+    </script>
+</body>
+</html>
