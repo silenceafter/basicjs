@@ -18,7 +18,11 @@
     -->
 
     <script>
-        
+        "use strict";
+        let collection = document.getElementsByTagName('h2');
+        for (let i = 0; i < collection.length; i++) {
+            console.log(collection[i].className);
+        }
     </script>
 </body>
 </html>

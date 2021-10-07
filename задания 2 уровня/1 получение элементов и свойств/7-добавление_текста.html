@@ -16,7 +16,14 @@
     2. Проверьте, есть ли в ссылке текст "ссылка", и если нет, то добавьте. -->
 
     <script>
-        
+        "use strict";
+        let links = document.querySelectorAll('a');
+        links.forEach(function(link, i, links) {
+            if (link.text.trim().toLowerCase() != 'ссылка'.toLowerCase()) {
+                link.text = "ссылка";
+            }
+            console.log(link);
+        });
     </script>
 </body>
 </html>

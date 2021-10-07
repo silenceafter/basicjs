@@ -17,7 +17,11 @@
     -->
 
     <script>
-
+        "use strict";
+        let collection = document.getElementsByClassName('one');
+        for (let i = 0; i < collection.length; i++) {
+            console.log(collection[i].tagName);
+        }
     </script>
 </body>
 </html>
