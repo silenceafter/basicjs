@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        /*
+            Напишем цикл в цикле и будем накапливать 'x' в зависимости от номера строки,
+            т.е. в 1 строке = 1 символ и т.д. до 20
+        */
+        
+        for (let i = 0; i < 20; i++) {
+            let str = "";
+            for (let j = 0; j <= i; j++) {
+                str += 'x';
+            }
+            console.log(str);
+        }
+    </script>
+</body>
+</html>
