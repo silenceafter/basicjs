@@ -36,7 +36,27 @@
      -->
 
     <script>
-        
+        "use strict";
+        let formEl = document.querySelector('form');
+        let inputOne = document.getElementById('first');
+        let inputTwo = document.getElementById('second');
+        formEl.addEventListener('submit', function(event) {
+            let empty = false;
+            if (inputOne.value === '') {
+                empty = true;
+                inputOne.style.borderColor = 'red';
+            }
+
+            if(inputTwo.value === '') {
+                empty = true;
+                inputTwo.style.borderColor = 'red';
+            }
+
+            if (empty) {
+                //останавливаем отправку формы
+                event.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>

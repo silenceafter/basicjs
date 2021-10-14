@@ -17,7 +17,11 @@
     padding. -->
 
     <script>
-        
+        "use strict";
+        let divTag = document.getElementsByTagName('div');
+        for(let i = 0; i < divTag.length; i++) {
+            divTag[i].style.padding = '10px';
+        }
     </script>
 </body>
 </html>

@@ -31,23 +31,39 @@
     -->
 
     <script>
+        "use strict";
         let firstStar = document.getElementById('first');
         let secondStar = document.getElementById('second');
         let thirdStar = document.getElementById('third');
         let fourthStar = document.getElementById('fourth');
-        let fifthStar = document.getElementById('fifth');
-
+        let fifthStar = document.getElementById('fifth')
         let goldenClass = 'golden';
 
-        firstStar.addEventListener('mouseover', function() {
-            if (!firstStar.classList.contains('goldenClass')) {
-                firstStar.classList.add(goldenClass);
+        let starsArray = [firstStar, secondStar, thirdStar, fourthStar, fifthStar]; 
+        for (let i = 0; i < starsArray.length; i++) {
+            starsArray[i].addEventListener('mouseover', function() {
+            for (let j = i; j >= 0; j--) {
+                if (!starsArray[j].classList.contains('goldenClass')) {
+                    starsArray[j].classList.add(goldenClass);
+                }
             }
-        });
+            //console.log(document.querySelectorAll("i[class='fas fa-star golden']"));
+            });
 
-        firstStar.addEventListener('mouseout', function() {
-            firstStar.classList.remove(goldenClass);
-        });
+            starsArray[i].addEventListener('mouseout', function() {
+                for (let j = i; j >= 0; j--) {
+                    if (!starsArray[j].classList.contains('goldenClass')) {
+                        starsArray[j].classList.remove(goldenClass);
+                    }
+                }                
+            });
+            /*
+                Вопрос про плавность процесса "закрашивания" звезд и возвращения в прежнее состояние.
+                Класс golden добавляется/убирается в зависимости от события, значит, действие
+                выполняется правильно (по идее), но есть небольшие подергивания. Или это просто 
+                пример, а на практике все несколько иначе?
+            */
+        }
     </script>
 </body>
 </html>

@@ -44,9 +44,21 @@
     -->
 
     <script>
+        "use strict";
+        let buttons = document.querySelectorAll('button');
+        buttons.forEach(function(button) {
+            button.addEventListener('click', closeClickHandler);
+        });
 
+        /** 
+         * Обработка события нажатия кнопки
+         * @param {object} event - объект для совершения действий над источником события
+         * @returns {}
+        */
         function closeClickHandler(event) {
-           
+            //display = none
+           event.currentTarget.parentElement.style.display = 'none';
+           return;
         }
     </script>
 </body>
