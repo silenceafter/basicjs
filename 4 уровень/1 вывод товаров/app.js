@@ -1,7 +1,5 @@
 "use strict";
-/* 
-Разметка товара:
-
+/*Разметка товара:
 <div class="product">
     <div>${здесь_название_товара}</div>
     <img src="${здесь путь до картинки}" alt="">
@@ -9,7 +7,6 @@
     <a href="https://example.com/producs/${здесь_id_товара}">Подробнее</a>
 </div>
 */
-
 const products = {
     phones: [
         {
@@ -75,17 +72,19 @@ const products = {
     ],
 };
 
-
+let productsElement = document.querySelector('.products');
+let buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', clickHandler));
 /**
  * Эта функция должна вызываться при клике по кнопкам.
  * @param {MouseEvent} event
  */
 function clickHandler(event) {
     //вам нужно очищать содержимое .products
-    
+    productsElement.innerHTML = "";
     //в showCategory надо передать строку с типом категории, тип берите
     //из атрибута data-type у кнопки, по которой кликнули.
-    
+    showCategory(event.target.dataset.type);
 }
 
 /**
@@ -96,7 +95,12 @@ function clickHandler(event) {
  * по которой кликнули.
  */
 function showCategory(category) {
-    
+    let categoryArray = products[category];
+    let productMarkup = "";
+    categoryArray.forEach(function(product) {
+        productMarkup += getProductMarkup(product);
+    });
+    productsElement.insertAdjacentHTML('afterbegin', productMarkup);
 }
 
 /**
@@ -109,5 +113,12 @@ function showCategory(category) {
  * в верху этого файла.
  */
 function getProductMarkup(product) {
-
+    return `
+        <div class="product">
+            <div>${ product.name }</div>
+            <img src="${ product.imageUrl }" alt="">
+            <div>${ product.imageUrl }</div>
+            <a href="https://example.com/producs/${ product.id }">Подробнее</a>
+        </div>
+        `;
 }
